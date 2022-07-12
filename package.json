@@ -1,6 +1,6 @@
 {
   "name": "com.kilomelo.runtime-inspector",
-  "displayName": "Imugui",
+  "displayName": "Runtime Inspector",
   "version": "0.0.1",
   "author": {
     "name": "KiloMelo",
@@ -9,16 +9,17 @@
   },
   "repository": {
     "type": "git",  
-    "url": "https://github.com/kilomelo/imugui.git"
+    "url": "https://github.com/kilomelo/runtime-inspector.git"
   },
   "unity": "2021.3",
-  "description": "Immediate Mode GUI Using Unity GUI",
+  "description": "Runtime editor tools",
   "keywords": [
     "GUI",
     "Development"
   ],
   "type": "tool",
-  "dependencies": {
-    "com.kilomelo.imugui": "0.0.1"
-  }
+  "dependencies": {},
+  "gitDependencies": [
+    "https://github.com/kilomelo/imugui.git"
+  ]
 }
