@@ -35,19 +35,19 @@ namespace RuntimeInspector
         {
             base.Update();
 // #if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-                if (Physics.Raycast (ray, out var hit, 100f))
-                {
-                    // Log.Debug($"hit scene obj {hit.transform.name}");
-                    ChangeSelected(hit.transform.gameObject);
-                    return;
-                }
-
-                RaycastWorldUI();
-                if (_uiRaycastResults.Any()) ChangeSelected(_uiRaycastResults[0].gameObject);
-            }
+            // if (Input.GetKeyDown(KeyCode.Space))
+            // {
+            //     var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+            //     if (Physics.Raycast (ray, out var hit, 100f))
+            //     {
+            //         // Log.Debug($"hit scene obj {hit.transform.name}");
+            //         ChangeSelected(hit.transform.gameObject);
+            //         return;
+            //     }
+            //
+            //     RaycastWorldUI();
+            //     if (_uiRaycastResults.Any()) ChangeSelected(_uiRaycastResults[0].gameObject);
+            // }
 // #endif
         }
 
