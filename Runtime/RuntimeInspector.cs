@@ -104,7 +104,9 @@ namespace RuntimeInspector
             ClearComponentInspectors();
             foreach (var component in _selectedGameObject.GetComponents<Component>())
             {
-                if (AutoExpandComponents.Contains(component.GetType().ToString().Split(".")[^1]))
+                var parts = component.GetType().ToString().Split(".");
+                var componentName = parts[parts.Length - 1];
+                if (AutoExpandComponents.Contains(componentName))
                 {
                     _expandComponents.Add(component.GetInstanceID());
                 }
@@ -179,7 +181,7 @@ namespace RuntimeInspector
             var expand = _expandComponents.Contains(componentInstanceId);
             var wrapLeftIcon = expand ? "<" : "--";
             var wrapRightIcon = expand ? ">" : "--";
-            var title = $"<align=center> {wrapLeftIcon} {typeParts[^1]} {wrapRightIcon} [{componentInstanceId}]";
+            var title = $"<align=center> {wrapLeftIcon} {typeParts[typeParts.Length - 1]} {wrapRightIcon} [{componentInstanceId}]";
             var enabled = true;
             Imu.BeginHorizontalLayout();
             if (null != enabledProperty)
@@ -230,8 +232,9 @@ namespace RuntimeInspector
                 // open editor panel
                 if (null != _valueEditPanel)
                 {
+                    var parts = instance.GetType().ToString().Split(".");
                     _valueEditPanel.OpenPanel(
-                        gameObjectName,instance.GetType().ToString().Split(".")[^1], member.Name,
+                        gameObjectName, parts[parts.Length - 1], member.Name,
                         value, o =>
                     {
                         fieldInfo?.SetValue(instance, o);

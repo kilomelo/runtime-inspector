@@ -67,10 +67,10 @@ namespace RuntimeInspector
             EventSystem.current.RaycastAll(pointerData, _uiRaycastResults);
 
             if (!_uiRaycastResults.Any()) return;
-            Debug.Log($"Cnt: {_uiRaycastResults.Count}, Root Element: {_uiRaycastResults[^1].gameObject.name}, GrandChild Element: {_uiRaycastResults[0].gameObject.name}");
+            // Debug.Log($"Cnt: {_uiRaycastResults.Count}, Root Element: {_uiRaycastResults[_uiRaycastResults.Count - 1].gameObject.name}, GrandChild Element: {_uiRaycastResults[0].gameObject.name}");
             // dont select imugui
-            if (_uiRaycastResults[^1].gameObject.scene != Imu.ImuguiRootTrans.gameObject.scene) return;
-            var trans = _uiRaycastResults[^1].gameObject.transform;
+            if (_uiRaycastResults[_uiRaycastResults.Count - 1].gameObject.scene != Imu.ImuguiRootTrans.gameObject.scene) return;
+            var trans = _uiRaycastResults[_uiRaycastResults.Count - 1].gameObject.transform;
             while (null != trans.parent) trans = trans.parent;
             if (Imu.ImuguiRootTrans == trans) _uiRaycastResults.Clear();
         }
